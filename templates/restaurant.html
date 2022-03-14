@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-9" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.0" />
+
+    <link rel="stylesheet" href="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/style1.css" />
+
+
+    <title>Oggy</title>
+  </head>
+  <body>
+    <nav class="navigation">
+      <a href="/" class="link-reset navigation__logo">
+        <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/logo.png"></img>
+      </a>
+      <div class="navigation__search search">
+        <form class="search__form" action="/restaurant">
+          <div class="search__query">
+            <input type="text" name="name" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Find Restaurants, Dishes,..."/>
+            <div class="suggestion suggestion__query"></div>
+          </div>
+          <button class="search__button">Search</button>
+        </form>
+      </div>
+    </nav>
+    <div class="restaurant">
+      <div class="path">
+        <a href=#></a>
+        <a href=#></a>
+        <a href=#></a>
+      </div>
+      <section class="restaurant__images">
+        <section class="restaurant__images__first">
+          <img class="restaurant__image" src="{{image1}}"></img>
+        </section>
+        <section class="restaurant__images__section">
+          <div class="restaurant__image__container">
+            <img class="restaurant__image" src="{{image2}}"></img>
+          </div>
+          <div class="restaurant__image__container">
+            <img class="restaurant__image" src="{{image3}}"></img>
+          </div>
+        </section>
+        <section class="restaurant__images__section">
+          <div class="restaurant__image__container restaurant__gallery">
+            <img class="restaurant__image" src="{{image4}}"></img>
+          </div>
+          <a href="#" class="link-reset restaurant__images__add">
+            <div class="restaurant__images__add--icon">
+              <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/add-photo.png" alt="add image" />
+            </div>
+            <span>Add Photos</span>
+          </a>
+        </section>
+      </section>
+      <section class="restaurant__information">
+        <div class="restaurant__description">
+          <h1 class="restaurant__heading">{{name}}</h1>
+          <h3 class="restaurant__food">{{cuisines}}</h3>
+          <h3 class="restaurant__location"><a href="#">{{address}}</a></h3>
+          <h5 class="restaurant__status"><span class="restaurant__status--current"></span>  <span class="restaurant__status--time">{{timing}}</span></h5>
+        </div>
+
+        <div class="restaurant__reviews">
+          <div class="restaurant__reviews__child">
+            <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/zomato.png"></img>
+            <div class="restaurant__review">
+              <div class="restaurant__rating">
+                <div>{{zomato_rating}}</div>
+                <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/rating.png" />
+              </div>
+            </div>
+          </div>
+          <div class="restaurant__reviews__child">
+            <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/swiggy.png" ></img>
+            <div class="restaurant__review">
+              <div class="restaurant__rating">
+                <div>{{swiggy_rating}}</div>
+                <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/rating.png" />
+              </div>
+            </div>
+          </div>
+          <div class="restaurant__reviews__child">
+            <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/dineout.png" ></img>
+            <div class="restaurant__review">
+              <div class="restaurant__rating">
+                <div>{{dineout_rating}}</div>
+                <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/rating.png" />
+              </div>
+            </div>
+          </div>
+          <div class="restaurant__reviews__child">
+            <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/magicpin.png" ></img>
+            <div class="restaurant__review">
+              <div class="restaurant__rating">
+                <div>{{magicpin_rating}}</div>
+                <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/rating.png" />
+              </div>
+            </div>
+          </div>
+          <div class="restaurant__reviews__child">
+            <img src=""></img>
+            <div class="restaurant__review">
+            </div>
+          </div>          
+        </div>
+        <div class="restaurant__actions">
+          <a href="{{direction}}" target="_blank" class="link-reset restaurant__action restaurant__action--2"><img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/direction.png"></img><span>Direction</span></a>
+        </div>
+      </section>
+
+      <section class="restaurant__options">
+        <!-- <ul class="restaurant__nav">
+          <li class="restaurant__nav--item restaurant__nav--active"><a href="#">Overview</a></li>
+          <li class="restaurant__nav--item"><a href="#">Offers</a></li>
+          <li class="restaurant__nav--item"><a href="#">Reviews</a></li>
+          <li class="restaurant__nav--item"><a href="#">Photos</a></li>
+          <li class="restaurant__nav--item"><a href="#">Menu</a></li>
+        </ul> -->
+        <section class="restaurant__overview">
+          <div class="restaurant__overview__offers">
+            <div class="restaurant__overview__offers__header">
+              <h2>Online Offers</h2>
+              <p>Offers and Coupons verified today</p>
+            </div>
+            <div class="restaurant__overview__offers__cards">
+              {% for desc, code in zomato_offers %}
+                <div class="offer-card offer-card__zomato">
+                  <div class="offer-card__vendor">
+                    <a href="{{zomato_link}}" target='_blank'><img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/zomato.png"></img></a>
+                  </div>
+                  <div class="offer-card__condition">
+                    <span>{{desc}}</span>
+                  </div>
+                  <div class="offer-card__coupon">
+                    <span>{{code}}</span>
+                  </div>
+              </div>
+              {% endfor %}
+              {% for desc, code in swiggy_offers %}
+              <div class="offer-card offer-card__swiggy">
+                  <div class="offer-card__vendor">
+                    <a href="{{swiggy_link}}" target="_blank">
+                    <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/swiggy.png" ></img>
+                    </a>
+                  </div>
+                  <div class="offer-card__condition">
+                    <span>{{desc}}</span>
+                  </div>
+                  <div class="offer-card__coupon" >
+                    <span>{{code}}</span>
+                  </div>
+              </div>
+              {% endfor %}
+              {% if dineout_offers != "-" %}
+              <div class="offer-card offer-card__dineout">
+                  <div class="offer-card__vendor">
+                    {% if dineout_link != "-" %}
+                    <a href="{{dineout_link}}" target="_blank">
+                      <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/dineout.png" ></img>
+                    </a>
+                    {% else %}
+                    <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/dineout.png" ></img>
+                    {% endif %}
+                  </div>
+                  <div class="offer-card__condition">
+                    <span>{{dineout_offers}}</span>
+                  </div>
+              </div>
+              {% endif %}
+              {% if magicpin_item != "-" %}
+              {% for item in magicpin_offers %}
+              <div class="offer-card offer-card__magicpin">
+                  <div class="offer-card__vendor">
+                    <a href="{{magicpin_link}}" target="_blank">
+                    <img src="https://restbuckoggyimg.s3.ap-south-1.amazonaws.com/assets/magicpin.png" ></img>
+                    </a>
+                  </div>
+                  <div class="offer-card__condition">
+                    <span>{{item}}</span>
+                  </div>
+              </div>
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+          <div class="restaurant__overview__cuisine"></div>
+          <div class="restaurant__overview__albums"></div>
+          <div class="restaurant__overview__reviews"></div>
+        </section>
+        <!-- <section class="restaurant__offers"></section>
+        <section class="restaurant__rvw"></section>
+        <section class="restaurant__photos"></section>
+        <section class="restaurant__menu"></section> -->
+      </section>
+    </div>
+    <footer></footer>
+  </body>
+</html>
