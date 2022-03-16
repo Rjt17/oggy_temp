@@ -139,6 +139,7 @@
                   </div>
               </div>
               {% endfor %}
+              {% if swiggy_offers != "-" %}
               {% for desc, code in swiggy_offers %}
               <div class="offer-card offer-card__swiggy">
                   <div class="offer-card__vendor">
@@ -154,6 +155,7 @@
                   </div>
               </div>
               {% endfor %}
+              {% endif %}
               {% if dineout_offers != "-" %}
               <div class="offer-card offer-card__dineout">
                   <div class="offer-card__vendor">

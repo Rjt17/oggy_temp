@@ -48,11 +48,14 @@ def restaurant(request):
     zomato_desc_list = zomato_desc.split(",")
     zomato_code_list = zomato_code.split(",")
     swiggy_offers_list = swiggy_offers.split(",")
-    s1desc, s2code = zip(*(s.split('|') for s in swiggy_offers_list))
-    s1desc = list(s1desc)
-    s2code = list(s2code)
+    if swiggy_offers_list[0] != "-":
+        s1desc, s2code = zip(*(s.split('|') for s in swiggy_offers_list))
+        s1desc = list(s1desc)
+        s2code = list(s2code)
+        swiggy_offers = zip(s1desc,s2code)
+    else:
+        swiggy_offers = "-"
     zomato_offers = zip(zomato_desc_list, zomato_code_list)
-    swiggy_offers = zip(s1desc,s2code)
     magicpin_offers = magicpin_desc.split(',')
 
     context = {
