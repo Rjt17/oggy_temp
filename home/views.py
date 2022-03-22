@@ -13,11 +13,14 @@ def index(request):
     data = cur.fetchall()
     data = list(data)
     data2 = []
+    restaurants = []
     for x in data:
         data2.append(list(x))
-    rest_names = "rajat"
+    for x in data2:
+        restaurants.append(x[0])
     context = {
-        'rest_list' : data2
+        'rest_list' : data2,
+        'restaurants' : restaurants
     }
     return render(request, 'index.html', context)
 

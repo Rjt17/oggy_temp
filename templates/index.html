@@ -17,7 +17,12 @@
       <div class="navigation__search search">
         <form class="search__form" action="/restaurant">
           <div class="search__query">
-            <input type="text" name="name" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Find Restaurants"/>
+            <input type="text" name="name" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Find Restaurants" list="restaurantlist"/>
+            <datalist id="restaurantlist">
+              {% for item in restaurants %}
+              <option value="{{item}}">{{item}}</option>
+              {% endfor %}
+            </datalist>
             <div class="suggestion suggestion__query"></div>
           </div>
           <button class="search__button">Search</button>
